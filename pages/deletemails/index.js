@@ -15,7 +15,7 @@ import { initializeApp } from "firebase/app";
 import { useState } from "react";
 import { firebaseConfig } from "../../Backend/Firebase";
 import { getDatabase, ref, onValue, remove } from "firebase/database";
-function index() {
+function Index() {
   const app = initializeApp(firebaseConfig);
   const [name, setName] = useState();
   const db = getDatabase(app);
@@ -82,4 +82,4 @@ function index() {
   );
 }
 
-export default index;
+export default Index;
