@@ -35,8 +35,8 @@ const useStyles = makeStyles({
     "& .MuiTypography-h6": {
       transition: "all 0.3s",
       fontSize: "17px",
-      fontWeight: "900",
-      color: "#f90",
+      fontWeight: "700",
+      color: "#fff",
       display: "none",
 
       ["@media (min-width:1200px)"]: {
@@ -44,7 +44,7 @@ const useStyles = makeStyles({
         fontSize: "30px",
         color: "#fff",
         fontWeight: "900",
-        color: "#f90",
+
         display: "block",
       },
     },
@@ -75,9 +75,10 @@ function Layout(props) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
+            padding: "0vh,30vw",
           }}
         >
-          <img src="/img/logo_text.png" alt="/logo" />
+          <img src="/img/logo.png" alt="/logo" height="100%" width="100%" />
         </Typography>
       </Toolbar>
       <Divider />
@@ -108,7 +109,7 @@ function Layout(props) {
         <AppBar
           position="fixed"
           sx={{
-            background: "#3636cb",
+            background: "#fff",
             boxShadow: "none",
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             ml: { sm: `${drawerWidth}px` },
@@ -129,12 +130,18 @@ function Layout(props) {
               alignItems="center"
               justifyContent="center"
               textAlign="center"
+              border="none"
             >
               {" "}
               <Typography variant="h4">
-                <img src="/img/logo_text.png" />
+                <img
+                  src="/img/logo.png"
+                  height="100%"
+                  width="100%"
+                  style={{ objectFit: "cover", padding: 2 }}
+                />
               </Typography>
-              <Typography variant="h6">
+              <Typography variant="h6" color="#fff">
                 Admin-<span>Panel</span>
               </Typography>
             </Grid>
