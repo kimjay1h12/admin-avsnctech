@@ -13,11 +13,16 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
-import { content } from "./Navigator";
 import Grid from "@mui/material/Grid";
 import { makeStyles } from "@mui/styles";
 import Typography from "@mui/material/Typography";
 import Content from "./Content";
+import { Person } from "@mui/icons-material";
+import { MailLock } from "@mui/icons-material";
+import { Mail } from "@mui/icons-material";
+import { Home } from "@mui/icons-material";
+import { Search } from "@mui/icons-material";
+
 const useStyles = makeStyles({
   root: {
     transition: "all 0.3s",
@@ -58,6 +63,29 @@ const useStyles = makeStyles({
 });
 
 const drawerWidth = 240;
+const content = [
+  {
+    url: "/1",
+    title: "Home",
+    icon: <Home />,
+  },
+
+  {
+    url: "/3",
+    title: "Names",
+    icon: <Person />,
+  },
+  {
+    url: "/4",
+    title: "Mails",
+    icon: <MailLock />,
+  },
+  {
+    url: "/deletemails",
+    title: "Delete Mails",
+    icon: <MailLock />,
+  },
+];
 
 function Layout(props) {
   const { window } = props;
