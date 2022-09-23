@@ -225,6 +225,8 @@ function Layout(props) {
           component="main"
           sx={{
             flexGrow: 1,
+            background: " #999",
+            height: "100%",
             p: 3,
 
             width: { sm: `calc(100% - ${drawerWidth}px)` },

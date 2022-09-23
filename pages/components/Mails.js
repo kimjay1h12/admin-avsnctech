@@ -137,7 +137,8 @@ function Content() {
                       width: "300px",
 
                       display: "flex",
-
+                      justifyContent: "center",
+                      alignItems: "center",
                       flexDirection: "column",
                     }}
                   >
