@@ -20,7 +20,7 @@ function Index() {
   const [name, setName] = useState();
   const db = getDatabase(app);
   const handleDelete = () => {
-    remove(ref(db, "users/" + { name }));
+    remove(ref(db, "users/" + name));
   };
   return (
     <div>

@@ -22,6 +22,8 @@ import { MailLock } from "@mui/icons-material";
 import { Mail } from "@mui/icons-material";
 import { Home } from "@mui/icons-material";
 import { Search } from "@mui/icons-material";
+import Mails from "./Mails";
+import { Icon } from "@mui/material";
 
 const useStyles = makeStyles({
   root: {
@@ -65,7 +67,7 @@ const useStyles = makeStyles({
 const drawerWidth = 240;
 const content = [
   {
-    url: "/1",
+    url: <Content />,
     title: "Home",
     icon: <Home />,
   },
@@ -76,13 +78,8 @@ const content = [
     icon: <Person />,
   },
   {
-    url: "/4",
+    url: <Mails />,
     title: "Mails",
-    icon: <MailLock />,
-  },
-  {
-    url: "/deletemails",
-    title: "Delete Mails",
     icon: <MailLock />,
   },
 ];
@@ -90,6 +87,7 @@ const content = [
 function Layout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [link, setLink] = React.useState(<Content />);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -97,7 +95,7 @@ function Layout(props) {
 
   const drawer = (
     <div>
-      <Toolbar>
+      <Toolbar style={{ background: "#777" }}>
         <Typography
           sx={{
             display: "flex",
@@ -109,17 +107,29 @@ function Layout(props) {
           <img src="/img/logo.png" alt="/logo" height="100%" width="100%" />
         </Typography>
       </Toolbar>
-      <Divider />
-      <List>
-        {content.map((text, index) => (
-          <ListItem sx={{ marginTop: " 10px" }} root key={index} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>{text.icon}</ListItemIcon>
 
-              <a href={text.url}>
-                <ListItemText />
-                {text.title}
-              </a>
+      <List style={{ background: "#777", height: "93vh" }}>
+        {content.map((text, index) => (
+          <ListItem
+            sx={{ marginTop: " 10px", color: "#fff" }}
+            root
+            key={index}
+            disablePadding
+          >
+            <ListItemButton
+              onClick={() => {
+                setLink(text.url);
+              }}
+            >
+              <ListItemIcon
+                style={{ display: "flex", alignItems: "center", color: "#fff" }}
+              >
+                {text.icon}{" "}
+                <ListItemText style={{ marginLeft: 20, color: "#fff" }}>
+                  {" "}
+                  {text.title}
+                </ListItemText>
+              </ListItemIcon>
             </ListItemButton>
           </ListItem>
         ))}
@@ -156,7 +166,7 @@ function Layout(props) {
             <Grid
               container
               alignItems="center"
-              justifyContent="center"
+              justifyContent="flex-end"
               textAlign="center"
               border="none"
             >
@@ -169,9 +179,8 @@ function Layout(props) {
                   style={{ objectFit: "cover", padding: 2 }}
                 />
               </Typography>
-              <Typography variant="h6" color="#fff">
-                Admin-<span>Panel</span>
-              </Typography>
+              <Icon />
+              <Typography color="#999">Welcome Avsyntech !!!</Typography>
             </Grid>
           </Toolbar>
         </AppBar>
@@ -223,7 +232,7 @@ function Layout(props) {
         >
           <Toolbar />
 
-          <Content />
+          {link}
         </Box>
       </Box>
     </div>

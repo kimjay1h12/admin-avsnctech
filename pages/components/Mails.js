@@ -1,4 +1,11 @@
-import { Delete, Summarize } from "@mui/icons-material";
+import {
+  Delete,
+  Forward,
+  Reply,
+  Summarize,
+  ViewAgenda,
+  VisibilitySharp,
+} from "@mui/icons-material";
 import { Search } from "@mui/icons-material";
 import { Mail } from "@mui/icons-material";
 import { Refresh } from "@mui/icons-material";
@@ -17,6 +24,10 @@ import {
   Card,
   CardContent,
   CardHeader,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
   Divider,
   Grid,
   Icon,
@@ -32,45 +43,19 @@ import {
 import { makeStyles } from "@mui/styles";
 import React from "react";
 
-const useStyles = makeStyles({
-  root: {
-    "& .MuiButton-root": {
-      transition: "all 0.3s",
-      background: "#000",
-
-      fontSize: "10px",
-      fontWeight: "900",
-      color: "#fff",
-      ["@media (min-width:1200px)"]: {
-        fontSize: "12px",
-      },
-    },
-    "& .MuiTypography-root": { color: "#000" },
-    "& .MuiTypography-h5": {
-      fontSize: "20px",
-      transition: "all 0.3s",
-      color: "#000",
-      ["@media (min-width:1200px)"]: {
-        fontSize: "35px",
-      },
-    },
-    "& .MuiGrid-item": {
-      transition: "all 0.3s",
-      display: "flex",
-      alignItems: "center",
-      marginTop: "10px",
-      justifyContent: "space-between",
-      flexDirection: "column",
-      ["@media (min-width:1200px)"]: {
-        display: "flex",
-        flexDirection: "row",
-      },
-    },
-  },
-});
+const useStyles = makeStyles({});
 function Content() {
   const [value, setValue] = useState([{}]);
   const [value2, setValue2] = useState("");
+  const [open, setOpen] = React.useState(false);
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
 
   const app = initializeApp(firebaseConfig);
 
@@ -122,7 +107,7 @@ function Content() {
                 Country
               </TableCell>
               <TableCell align="right" style={{ paddingRight: 50 }}>
-                Delete Data
+                Messages
               </TableCell>
             </TableRow>
           </TableHead>
@@ -139,15 +124,34 @@ function Content() {
                 <TableCell align="right" style={{ paddingRight: 50 }}>
                   {row.countryset}
                 </TableCell>
-                <TableCell align="right" style={{ paddingRight: 50 }}>
-                  <Button
-                    onClick={() => {
-                      const db = getDatabase(app);
-                      remove(ref(db, "users/" + row.name));
+                <TableCell>
+                  <Typography
+                    sx={{
+                      marginLeft: "0",
+                      ["@media (min-width : 1200px)"]: {
+                        marginLeft: "50%",
+                      },
+                    }}
+                    style={{
+                      wordBreak: "break-all",
+                      width: "300px",
+
+                      display: "flex",
+
+                      flexDirection: "column",
                     }}
                   >
-                    <Delete style={{ color: "red" }} />
-                  </Button>
+                    {row.message}
+                    <Button
+                      mt={5}
+                      variant="text"
+                      sx={{ background: "transparent" }}
+                      onClick={() => (window.location = "mailto:" + row.email)}
+                    >
+                      Reply
+                      <Reply />
+                    </Button>
+                  </Typography>
                 </TableCell>
               </TableRow>
             ))}
