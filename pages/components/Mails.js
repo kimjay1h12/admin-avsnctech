@@ -102,10 +102,10 @@ function Content() {
         <Table sx={{ minWidth: 650 }} aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Name</TableCell>
-              <TableCell align="center">Email</TableCell>
+              <TableCell>Names</TableCell>
+              <TableCell align="center">Emails</TableCell>
               <TableCell align="right" style={{ paddingRight: 50 }}>
-                Country
+                Countrys
               </TableCell>
               <TableCell align="right" style={{ paddingRight: 120 }}>
                 Messages
@@ -137,7 +137,7 @@ function Content() {
                       marginLeft: "0",
 
                       ["@media (min-width : 1200px)"]: {
-                        marginLeft: "50%",
+                        marginLeft: "54%",
                       },
                     }}
                     style={{ fontSize: 10, width: 150 }}

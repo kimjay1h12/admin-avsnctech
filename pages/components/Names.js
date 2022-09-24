@@ -117,12 +117,8 @@ function Content() {
           <TableHead>
             <TableRow>
               <TableCell>Names</TableCell>
-              <TableCell align="center">Emails</TableCell>
-              <TableCell align="right" style={{ paddingRight: 50 }}>
-                Countries
-              </TableCell>
-              <TableCell align="right" style={{ paddingRight: 50 }}>
-                Delete Datas
+              <TableCell align="right" style={{ marginRight: 50 }}>
+                Emails
               </TableCell>
             </TableRow>
           </TableHead>
@@ -135,20 +131,7 @@ function Content() {
                 <TableCell component="th" scope="row">
                   {row.name}
                 </TableCell>
-                <TableCell align="center">{row.email}</TableCell>
-                <TableCell align="right" style={{ paddingRight: 50 }}>
-                  {row.countryset}
-                </TableCell>
-                <TableCell align="right" style={{ paddingRight: 50 }}>
-                  <Button
-                    onClick={() => {
-                      const db = getDatabase(app);
-                      remove(ref(db, "users/" + row.name));
-                    }}
-                  >
-                    <Delete style={{ color: "red" }} />
-                  </Button>
-                </TableCell>
+                <TableCell align="right">{row.email}</TableCell>
               </TableRow>
             ))}
           </TableBody>

@@ -24,7 +24,7 @@ import { Home } from "@mui/icons-material";
 import { Search } from "@mui/icons-material";
 import Mails from "./Mails";
 import { Icon } from "@mui/material";
-
+import Names from "../components/Names";
 const useStyles = makeStyles({
   root: {
     transition: "all 0.3s",
@@ -73,7 +73,7 @@ const content = [
   },
 
   {
-    url: "/3",
+    url: <Names />,
     title: "Names",
     icon: <Person />,
   },
@@ -147,7 +147,7 @@ function Layout(props) {
         <AppBar
           position="fixed"
           sx={{
-            background: "#fff",
+            background: "#777",
             boxShadow: "none",
             width: { sm: `calc(100% - ${drawerWidth}px)` },
             ml: { sm: `${drawerWidth}px` },
@@ -166,21 +166,17 @@ function Layout(props) {
             <Grid
               container
               alignItems="center"
-              justifyContent="flex-end"
+              justifyContent="space-between"
               textAlign="center"
               border="none"
+              padding="0vh , 20vw"
             >
               {" "}
-              <Typography variant="h4">
-                <img
-                  src="/img/logo.png"
-                  height="100%"
-                  width="100%"
-                  style={{ objectFit: "cover", padding: 2 }}
-                />
+              <Typography color="#fff" fontSize={20}>
+                Dashboard
               </Typography>
               <Icon />
-              <Typography color="#999">Welcome Avsyntech !!!</Typography>
+              <Typography color="#fff">Welcome Avsyntech !!!</Typography>
             </Grid>
           </Toolbar>
         </AppBar>
