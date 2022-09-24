@@ -108,7 +108,7 @@ function Layout(props) {
         </Typography>
       </Toolbar>
 
-      <List style={{ background: "#777", height: "93vh" }}>
+      <List style={{ background: "#777", minHeight: "93.2vh" }}>
         {content.map((text, index) => (
           <ListItem
             sx={{ marginTop: " 10px", color: "#fff" }}
@@ -226,7 +226,7 @@ function Layout(props) {
           sx={{
             flexGrow: 1,
             background: " #999",
-            height: "100%",
+            minHeight: "100vh",
             p: 3,
 
             width: { sm: `calc(100% - ${drawerWidth}px)` },

@@ -4,6 +4,8 @@ import {
   Reply,
   Summarize,
   ViewAgenda,
+  Visibility,
+  VisibilityOff,
   VisibilitySharp,
 } from "@mui/icons-material";
 import { Search } from "@mui/icons-material";
@@ -47,14 +49,13 @@ const useStyles = makeStyles({});
 function Content() {
   const [value, setValue] = useState([{}]);
   const [value2, setValue2] = useState("");
-  const [open, setOpen] = React.useState(false);
+  const [visible, setVisible] = useState("none");
 
-  const handleClose = () => {
-    setOpen(false);
+  const handleViewmore = () => {
+    setVisible("flex");
   };
-
-  const handleClickOpen = () => {
-    setOpen(true);
+  const handleViewless = () => {
+    setVisible("none");
   };
 
   const app = initializeApp(firebaseConfig);
@@ -106,7 +107,7 @@ function Content() {
               <TableCell align="right" style={{ paddingRight: 50 }}>
                 Country
               </TableCell>
-              <TableCell align="right" style={{ paddingRight: 50 }}>
+              <TableCell align="right" style={{ paddingRight: 120 }}>
                 Messages
               </TableCell>
             </TableRow>
@@ -124,10 +125,30 @@ function Content() {
                 <TableCell align="right" style={{ paddingRight: 50 }}>
                   {row.countryset}
                 </TableCell>
-                <TableCell>
+                <TableCell
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <Button
+                    sx={{
+                      marginLeft: "0",
+
+                      ["@media (min-width : 1200px)"]: {
+                        marginLeft: "50%",
+                      },
+                    }}
+                    style={{ fontSize: 10, width: 150 }}
+                    onClick={handleViewmore}
+                  >
+                    View <Visibility />
+                  </Button>
                   <Typography
                     sx={{
                       marginLeft: "0",
+
                       ["@media (min-width : 1200px)"]: {
                         marginLeft: "50%",
                       },
@@ -136,22 +157,38 @@ function Content() {
                       wordBreak: "break-all",
                       width: "300px",
 
-                      display: "flex",
+                      display: visible,
                       justifyContent: "center",
                       alignItems: "center",
                       flexDirection: "column",
                     }}
                   >
                     {row.message}
-                    <Button
-                      mt={5}
-                      variant="text"
-                      sx={{ background: "transparent" }}
-                      onClick={() => (window.location = "mailto:" + row.email)}
-                    >
-                      Reply
-                      <Reply />
-                    </Button>
+                    <Grid container mt={5} flexDirection="row">
+                      {" "}
+                      <Button
+                        mt={5}
+                        variant="text"
+                        sx={{ background: "transparent" }}
+                        style={{ fontSize: 10, width: 150 }}
+                        onClick={() =>
+                          (window.location = "mailto:" + row.email)
+                        }
+                      >
+                        Reply
+                        <Reply />
+                      </Button>
+                      <Button
+                        style={{ fontSize: 10, width: 150 }}
+                        mt={5}
+                        variant="text"
+                        sx={{ background: "transparent" }}
+                        onClick={handleViewless}
+                      >
+                        Hide
+                        <VisibilityOff />
+                      </Button>
+                    </Grid>
                   </Typography>
                 </TableCell>
               </TableRow>

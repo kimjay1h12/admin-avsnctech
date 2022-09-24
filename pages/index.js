@@ -22,6 +22,7 @@ export default function Home() {
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
   const router = useRouter();
+
   const handleSignin = (e) => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -29,7 +30,6 @@ export default function Home() {
         const user = userCredential.user;
         console.log(user);
         router.push("/dashboard");
-        // ...
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -37,6 +37,7 @@ export default function Home() {
         setError("Incorrect Email or Password");
       });
   };
+
   return (
     <div
       style={{
